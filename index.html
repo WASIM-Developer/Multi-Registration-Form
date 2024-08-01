@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi Registration Form</title>
+    <Style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/formBackground.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .container {
+            width: 360px;
+            height: 400px;
+            margin: 8% auto;
+            background-color: antiquewhite;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: blue;
+        }
+
+        .container form {
+            width: 280px;
+            position: absolute;
+            top: 100px;
+            left: 40px;
+            transition: 0.5s;
+
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px 5px;
+            margin: 5px 0;
+            border: 0px;
+            border-bottom: 1px solid black;
+            outline: none;
+            background: transparent;
+        }
+
+        ::placeholder {
+            color: #777;
+        }
+
+        .btn-box {
+            width: 100%;
+            margin: 30px auto;
+            text-align: center;
+
+        }
+
+        form button {
+            width: 110px;
+            height: 35px;
+            margin: 0 10px;
+            background: linear-gradient(to right, #ff105f, #ffad06);
+            border-radius: 30px;
+            border: 0;
+            outline: none;
+            color: block;
+            cursor: pointer;
+        }
+
+        #form2 {
+            left: 450px;
+        }
+
+        #form3 {
+            left: 450px;
+        }
+
+        .step-row {
+            width: 360px;
+            height: 40px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 -1px 5px -1px #000;
+            position: relative;
+        }
+
+        .step-col {
+            width: 120px;
+            text-align: center;
+            color: #333;
+            position: relative;
+
+        }
+
+        #progress {
+            position: absolute;
+            height: 100%;
+            width: 120px;
+            background: linear-gradient(to right, #ff105f, #ffad06);
+            transition: 1s;
+            ;
+        }
+
+        #progress::after {
+            content: '';
+            height: 0;
+            width: 0;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            position: absolute;
+            right: -20px;
+            top: 0;
+            border-left: 20px solid #ffad06;
+
+        }
+
+        #progress::before {
+            content: '';
+            height: 0;
+            width: 0;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            position: absolute;
+            top: 0;
+            border-left: 20px solid #ffad06;
+
+        }
+    </Style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- ======================================== -->
+        <!--|         First Form                    | -->
+        <!-- ======================================== -->
+        <form action="" id="form1">
+            <h3>CREATE ACCOUNT</h3>
+            <input type="text" name="Email" id="" placeholder="Email" required>
+            <input type="Password" name="Password" id="" placeholder="Password" required>
+            <input type="Password" name="Password" id="" placeholder="Confirm Password" required>
+
+            <div class="btn-box">
+                <button type="button" id="Next1">Next</button>
+            </div>
+        </form>
+
+        <!-- ======================================== -->
+        <!--|         Second Form                    | -->
+        <!-- ======================================== -->
+        <form action="" id="form2">
+            <h3>Social Links</h3>
+            <input type="text" name="Facebook" id="" placeholder="Facebook">
+            <input type="text" name="Linkedin" id="" placeholder="Linkedin">
+            <input type="text" name="Instagram" id="" placeholder="Instagram">
+
+            <div class="btn-box">
+                <button type="button" id="Back1">Back</button>
+                <button type="button" id="Next2">Next</button>
+            </div>
+        </form>
+
+        <!-- ======================================== -->
+        <!--|         Third Form                    | -->
+        <!-- ======================================== -->
+        <form action="" id="form3">
+            <h3>Personal Information</h3>
+            <input type="text" name="fullName" id="" placeholder="Full Name" required>
+            <input type="text" name="fatherName" id="" placeholder="Father Name" required>
+            <input type="text" name="phoneNumber" id="" placeholder="Phone Number" required>
+
+            <div class="btn-box">
+                <button type="button" id="Back2">Back</button>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+        <!-- ======================================== -->
+        <!--|         step row of Form              | -->
+        <!-- ======================================== -->
+        <div class="step-row">
+            <div id="progress"></div>
+            <div class="step-col"><small>Step 1</small></div>
+            <div class="step-col"><small>Step 2</small></div>
+            <div class="step-col"><small>Step 3</small></div>
+        </div>
+    </div>
+
+    <!-- Script here -->
+    <script>
+        var form1 = document.getElementById('form1');
+        var form2 = document.getElementById('form2');
+        var form3 = document.getElementById('form3');
+
+        var next1 = document.getElementById('Next1');
+        var back1 = document.getElementById('Back1');
+        var next2 = document.getElementById('Next2');
+        var back2 = document.getElementById('Back2');
+
+        // process
+        var progress = document.getElementById('progress');
+
+        next1.onclick = function () {
+            form1.style.left = '-450px';
+            form2.style.left = '40px';
+            progress.style.width = '240px';
+        }
+
+        back1.onclick = function () {
+            form1.style.left = '40px';
+            form2.style.left = '450px';
+            progress.style.width = '120px';
+        }
+        next2.onclick = function () {
+            form2.style.left = '-450px';
+            form3.style.left = '40px';
+            progress.style.width = '360px';
+
+        }
+        back2.onclick = function () {
+            form2.style.left = '40px';
+            form3.style.left = '450px';
+            progress.style.width = '240px';
+        }
+
+
+    </script>
+</body>
+
+</html>
